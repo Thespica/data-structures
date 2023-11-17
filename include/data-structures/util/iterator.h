@@ -1,0 +1,6 @@
+#ifndef DATA_STRUCT_ITERATOR_H
+#define DATA_STRUCT_ITERATOR_H
+
+struct
+
+#endif //DATA_STRUCT_ITERATOR_H
