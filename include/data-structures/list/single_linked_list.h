@@ -34,6 +34,13 @@ SingleLinkedList ConstructSLL(void);
 Node *GetNodeAtSLL(SingleLinkedList head, unsigned int position);
 
 /**
+ * @brief Delete node at position
+ * @param head Head pointer of single linked list
+ * @param position Position of node, begin with 1
+ */
+void DeleteNodeAtSLL(SingleLinkedList head, unsigned int position);
+
+/**
  * @brief Get number of nodes
  * @param head Head pointer of single linked list
  * @param position Position of node, begin with 1
@@ -61,7 +68,7 @@ void TailInsertSLL(SingleLinkedList head, SINGLE_LINKED_LIST_ELEMENT_TYPE value)
  * @param head Head pointer of single linked list
  * @param value Value of node to be inserted
  */
-void HeadInsertSlL(SingleLinkedList head, SINGLE_LINKED_LIST_ELEMENT_TYPE value);
+void HeadInsertSLL(SingleLinkedList head, SINGLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
  * @brief Print the single linked list
@@ -78,9 +85,9 @@ void PrintSLL(SingleLinkedList head);
 bool DeleteFirstValueInSLL(SingleLinkedList head, SINGLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
- * @brief Delete the single linked list
+ * @brief Delete the single linked list, then set pointer on stack to NULL
  * @param head Head pointer of single linked list
  */
-void DestructSLL(SingleLinkedList head);
+void DestructSLL(SingleLinkedList *head);
 
 #endif // SINGLE_LINKED_LIST_H

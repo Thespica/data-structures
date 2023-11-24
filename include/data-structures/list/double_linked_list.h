@@ -56,7 +56,7 @@ bool DeleteFirstValueInDLL(DoubleLinkedList head, DOUBLE_LINKED_LIST_ELEMENT_TYP
 void PrintDLL(DoubleLinkedList head);
 
 /**
- * @brief Delete the double linked list, and set the pointer on stack to NULL after
+ * @brief Delete the double linked list, and set the pointer on array_stack to NULL after
  * @param head Head pointer of double linked list
  */
 void DestructDLL(DoubleLinkedList *head);

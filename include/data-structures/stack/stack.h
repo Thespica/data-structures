@@ -3,30 +3,24 @@
 
 #include <stddef.h>
 
+#ifndef STACK_ELEMENT_TYPE
 #define STACK_ELEMENT_TYPE int
+#endif
+#define SINGLE_LINKED_LIST_ELEMENT_TYPE STACK_ELEMENT_TYPE
+#include "data-structures/list/single_linked_list.h"
 #define POP_EMPTY_STACK_FAIL 4
-#define PUSH_FULL_STACK_FAIL POP_EMPTY_STACK_FAIL + 1
+#define PUSH_FULL_STACK_FAIL (POP_EMPTY_STACK_FAIL+1)
 
 /**
- * @brief The stack in memory
+ * @brief The stack in memory, implemented by single linked list
  */
-struct stack {
-    STACK_ELEMENT_TYPE *array;
-    size_t top_idx;
-    size_t capacity;
-};
+typedef SingleLinkedList Stack;
 
 /**
- * @brief The stack as pointer, top_idx is -1 when stack is empty
- */
-typedef struct stack * Stack;
-
-/**
- * @brief Construct a stack
- * @param capacity Capacity of the stack
+ * @brief construct a stackf
  * @return Pointer of the stack
  */
-Stack ConstructStack(size_t capacity);
+Stack ConstructStack(void);
 
 /**
  * @brief Push a new node at top of the stack
@@ -56,8 +50,8 @@ size_t GetStackSize(Stack stack);
 void PrintStack(Stack stack);
 
 /**
- * @brief Destruct the stack, and set the pointer to NULL after
- * @param stack Pointer of the pointer to stack
+ * @brief Destruct the stack
+ * @param stack Pointer of the stack on the stack, set to NULL after
  */
 void DestructStack(Stack *stack);
 
