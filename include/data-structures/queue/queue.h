@@ -3,63 +3,60 @@
 
 #include <stddef.h>
 
-#define QUEUE_ELEMENT_TYPE int
-#define DE_EMPTY_QUEUE_FAIL 2
+#include "../util/nodes.h"
 
 /**
- * @brief The node of queue
- */
-typedef struct node {
-    QUEUE_ELEMENT_TYPE value;
-    struct node *next;
-} Node;
-
-/**
- * @brief The queue, which contains a head node with value of number of nodes
+ * The queue, which contains a head node with value of number of nodes
  */
 struct queue {
-    Node *head;
-    Node *tail;
+    struct node *head;
+    struct node *tail;
 };
 
 /**
- * @brief The queue as pointer
+ * The queue as a whole, implemented by single linked list,
+ * And the queue will always point to the head node.
  */
 typedef struct queue * Queue;
 
 /**
- * @brief Construct a queue with head node
+ * Construct a queue with head node
+ * 
  * @return Head pointer of queue
  */
-Queue ConstructQueue(void);
+Queue NewQueue(void);
 
 /**
- * @brief Insert a new node at tail of queue
+ * Insert a new node at tail of queue
  */
-void Enqueue(Queue queue, QUEUE_ELEMENT_TYPE value);
+void EnQueue(Queue queue, QUEUE_ELEMENT_TYPE value);
 
 /**
- * @brief Get and delete the first node of queue
+ * Get and delete the first node of queue, the head node always exists
+ * 
  * @param queue Head pointer of queue
  * @return Value of first node
  */
-QUEUE_ELEMENT_TYPE Dequeue(Queue queue);
+QUEUE_ELEMENT_TYPE DeQueue(Queue queue);
 
 /**
- * @brief Get size of the queue
+ * Get size of the queue
+ * 
  * @param queue Head pointer of queue
  * @return Size of the queue
  */
 size_t GetQueueSize(Queue queue);
 
 /**
- * @brief Print the queue
+ * Print the queue
+ * 
  * @param queue Head pointer of queue
  */
 void PrintQueue(Queue queue);
 
 /**
- * @brief Destruct the queue, the queue holder will be set to NULL after
+ * Destruct the queue, the queue holder will be set to NULL after
+ * 
  * @param queue Head pointer of queue
  */
 void DestructQueue(Queue *queue);

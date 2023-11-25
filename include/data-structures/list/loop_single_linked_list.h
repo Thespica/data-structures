@@ -8,7 +8,7 @@
 #endif
 
 /**
- * @brief The node of loop single linked list
+ * The node of loop single linked list
  */
 typedef struct node {
     LOOP_SINGLE_LINKED_LIST_ELEMENT_TYPE value;
@@ -16,32 +16,37 @@ typedef struct node {
 } Node;
 
 /**
- * @brief The head of loop single linked list, which contains a head node with value of number of nodes
+ * The head of loop single linked list, which contains a head node with value of number of nodes
  */
 typedef Node * LoopSingleLinkedList;
 
 /**
- * @brief Construct a loop single linked list
+ * Construct a loop single linked list
+ *
+ *
  * @return Head pointer of loop single linked list
  */
 LoopSingleLinkedList ConstructLSLL(void);
 
 /**
- * @brief Insert a new node at head
+ * Insert a new node at head
+ *
  * @param head Head pointer of loop single linked list
  * @param value Value of new node
  */
 void HeadInsertLSLL(LoopSingleLinkedList head, LOOP_SINGLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
- * @brief Insert a new node at tail
+ * Insert a new node at tail
+ *
  * @param head Head pointer of loop single linked list
  * @param value Value of new node
  */
 void TailInsertLSLL(LoopSingleLinkedList head, LOOP_SINGLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
- * @brief Insert a new node at tail
+ * Insert a new node at tail
+ *
  * @param head Head pointer of loop single linked list
  * @param value Value of new node
  * @return True if success, otherwise false
@@ -49,13 +54,15 @@ void TailInsertLSLL(LoopSingleLinkedList head, LOOP_SINGLE_LINKED_LIST_ELEMENT_T
 bool DeleteFirstValueInLSLL(LoopSingleLinkedList head, LOOP_SINGLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
- * @brief Print loop single linked list
+ * Print loop single linked list
+ *
  * @param head Head pointer of loop single linked list
  */
 void PrintLSLL(LoopSingleLinkedList head);
 
 /**
- * @brief Delete the loop single linked list
+ * Delete the loop single linked list
+ *
  * @param head Head pointer of loop single linked list
  */
 void DestructLSLL(LoopSingleLinkedList head);

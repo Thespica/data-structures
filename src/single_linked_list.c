@@ -1,92 +1,78 @@
+#include "data-structures/list/single_linked_list.h"
+
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "data-structures/list/single_linked_list.h"
+#include "data-structures/util/allocator.h"
+#include "data-structures/util/generic.h"
 
-SingleLinkedList ConstructSLL(void) {
-    Node *head = (Node *) malloc(sizeof(Node));
-    head->value = 0;
-    head->next = NULL;
-    return head;
+extern struct allocator allocator_instance;
+
+SingleLinkedList NewSLL(void) {
+    return NewNode(NewInt(0), NULL);
 }
 
-inline Node *GetNodeAtSLL(SingleLinkedList head, unsigned int position) {
-    if (position > head->value) {
+int GetNodesNumSLL(SingleLinkedList head) {
+    return GetInt(head->value);
+}
+
+Node GetNodeAtSLL(SingleLinkedList head, size_t position) {
+    if (position > GetInt(head->value)) {
         return NULL;
     }
-    Node *iter_node = head;
+    Node iter_node = head;
     for (int i = 0; i < position; i++) {
         iter_node = iter_node->next;
     }
     return iter_node;
 }
 
-void DeleteNodeAtSLL(SingleLinkedList head, unsigned int position) {
-    if (!position || position > head->value) {
-        return;
-    }
-    Node *front_node = GetNodeAtSLL(head, position - 1);
-    Node *node_to_be_deleted = front_node->next;
-    front_node->next = node_to_be_deleted->next;
-    free(node_to_be_deleted);
-    head->value--;
-}
-
-int GetNodesNumSLL(const SingleLinkedList head) {
-    return head->value;
-}
-
-void InsertNodeAtSLL(SingleLinkedList head, unsigned int position, SINGLE_LINKED_LIST_ELEMENT_TYPE value) {
+void InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
     if (position == 0) {
+        DeleteNode(value);
         return;
     }
-    if (position > head->value + 1) {
-        position = head->value + 1;
+    if (position > GetInt(head->value) + 1) {
+        position = GetInt(head->value) + 1;
     }
-    Node *front_node = GetNodeAtSLL(head, position - 1);
-    Node *new_node = (Node *) malloc(sizeof(Node));
-    new_node->value = value;
-    new_node->next = front_node->next;
+    Node front_node = GetNodeAtSLL(head, position - 1);
+    Node new_node = NewNode(value, front_node->next);
     front_node->next = new_node;
-    head->value++;
+    IntPostInc(head->value);
 }
 
-void TailInsertSLL(SingleLinkedList head, SINGLE_LINKED_LIST_ELEMENT_TYPE value) {
-    InsertNodeAtSLL(head, head->value + 1, value);
-}
-
-void HeadInsertSLL(SingleLinkedList head, SINGLE_LINKED_LIST_ELEMENT_TYPE value) {
+void HeadInsertSLL(SingleLinkedList head, NodeValue value) {
     InsertNodeAtSLL(head, 1, value);
 }
 
-void PrintSLL(SingleLinkedList head) {
-    for (Node *iter = head->next; iter; iter = iter->next) {
-        printf("%d ", iter->value);
-    }
-    printf("\n");
+void TailInsertSLL(SingleLinkedList head, NodeValue value) {
+    InsertNodeAtSLL(head, GetNodesNumSLL(head) + 1, value);
 }
 
-bool DeleteFirstValueInSLL(SingleLinkedList head, SINGLE_LINKED_LIST_ELEMENT_TYPE value) {
-    Node *current = head;
-    while (current->next) {
-        if (current->next->value == value) {
-            Node *node_to_be_deleted = current->next;
-            current->next = current->next->next;
-            free(node_to_be_deleted);
-            head->value--;
-            return true;
-        }
-        current = current->next;
+void DeleteNodeAtSLL(SingleLinkedList head, size_t position) {
+    if (!position || position > GetNodesNumSLL(head)) {
+        return;
     }
-    return false;
+    Node front_node = GetNodeAtSLL(head, position - 1);
+    Node node_to_be_deleted = front_node->next;
+    front_node->next = front_node->next->next;
+    allocator_instance.deallocate(node_to_be_deleted);
+    IntPostDec(head->value);
 }
 
-void DestructSLL(SingleLinkedList *head) {
-    Node *current = *head;
+void TraverseSLL(SingleLinkedList head, void (*for_traversing_node)(Node)) {
+    for (Node iter = head->next; iter; iter = iter->next) {
+        for_traversing_node(iter);
+    }
+}
+
+void DestructSLL(SingleLinkedList *list) {
+    Node current = *list;
     while (current) {
-        Node *node_to_be_deleted = current;
+        Node node_to_be_deleted = current;
         current = current->next;
-        free(node_to_be_deleted);
+        DeleteNode(node_to_be_deleted);
     }
-    *head = NULL;
+    *list = NULL;
 }

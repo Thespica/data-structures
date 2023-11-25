@@ -8,7 +8,7 @@
 #endif
 
 /**
- * @brief The node of double linked list
+ * The node of double linked list
  */
 typedef struct node {
     DOUBLE_LINKED_LIST_ELEMENT_TYPE value;
@@ -17,32 +17,36 @@ typedef struct node {
 } Node;
 
 /**
- * @brief The head of double linked list, which contains a head node with value of number of nodes
+ * The head of double linked list, which contains a head node with value of number of nodes
  */
 typedef Node * DoubleLinkedList;
 
 /**
- * @brief Construct a double linked list
+ * Construct a double linked list
+ *
  * @return Head pointer of double linked list
  */
 DoubleLinkedList ConstructDLL(void);
 
 /**
- * @brief Insert a new node at head
+ * Insert a new node at head
+ *
  * @param head Head pointer of double linked list
  * @param value Value of new node
  */
 void HeadInsertDLL(DoubleLinkedList head, DOUBLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
- * @brief Insert a new node at tail
+ * Insert a new node at tail
+ *
  * @param head Head pointer of double linked list
  * @param value Value of new node
  */
 void TailInsertDLL(DoubleLinkedList head, DOUBLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
- * @brief Delete the first node with value
+ * Delete the first node with value
+ *
  * @param head Head pointer of double linked list
  * @param value Value of node to be deleted
  * @return
@@ -50,13 +54,15 @@ void TailInsertDLL(DoubleLinkedList head, DOUBLE_LINKED_LIST_ELEMENT_TYPE value)
 bool DeleteFirstValueInDLL(DoubleLinkedList head, DOUBLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
- * @brief Print double linked list
+ * Print double linked list
+ *
  * @param head Head pointer of double linked list
  */
 void PrintDLL(DoubleLinkedList head);
 
 /**
- * @brief Delete the double linked list, and set the pointer on array_stack to NULL after
+ * Delete the double linked list, and set the pointer on array_stack to NULL after
+ *
  * @param head Head pointer of double linked list
  */
 void DestructDLL(DoubleLinkedList *head);

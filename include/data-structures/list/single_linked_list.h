@@ -2,92 +2,82 @@
 #define SINGLE_LINKED_LIST_H
 
 #include <stdbool.h>
+#include <stddef.h>
 
-#ifndef SINGLE_LINKED_LIST_ELEMENT_TYPE
-#define SINGLE_LINKED_LIST_ELEMENT_TYPE int
-#endif
+#include "../util/nodes.h"
 
-/**
- * @brief The node of single linked list
- * @param value Value of node
- * @param next Pointer to next node
- */
-typedef struct node {
-    SINGLE_LINKED_LIST_ELEMENT_TYPE value;
-    struct node *next;
-} Node;
-
-typedef Node *SingleLinkedList;
+typedef Node SingleLinkedList;
 
 /**
- * @brief Construct a single linked list
+ * Construct a single linked list
+ *
  * @return Head pointer of single linked list
  */
-SingleLinkedList ConstructSLL(void);
+SingleLinkedList NewSLL(void);
 
 /**
- * @brief Get node at position
- * @param head Head pointer of single linked list
- * @param position Position of node, begin with 1
- * @return Node pointer
- */
-Node *GetNodeAtSLL(SingleLinkedList head, unsigned int position);
-
-/**
- * @brief Delete node at position
- * @param head Head pointer of single linked list
- * @param position Position of node, begin with 1
- */
-void DeleteNodeAtSLL(SingleLinkedList head, unsigned int position);
-
-/**
- * @brief Get number of nodes
+ * Get number of nodes
+ *
  * @param head Head pointer of single linked list
  * @param position Position of node, begin with 1
  * @return Number of nodes
  */
-int GetNodesNumSLL(const SingleLinkedList head);
+int GetNodesNumSLL(SingleLinkedList head);
 
 /**
- * @brief Insert a new node at position, begin with 1
+ * Get node at position
+ *
+ * @param head Head pointer of single linked list
+ * @param position Position of node, begin with 1
+ * @return Node pointer
+ */
+Node GetNodeAtSLL(SingleLinkedList head, size_t position);
+
+/**
+ * Insert a node at position, begin with 1
+ *
  * @param head Head pointer of single linked list
  * @param position Position of node, begin with 1
  * @param value Value of node to be inserted
  */
-void InsertNodeAtSLL(SingleLinkedList head, unsigned int position, SINGLE_LINKED_LIST_ELEMENT_TYPE value);
+void InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value);
 
 /**
- * @brief Insert a new node at tail
+ * Insert a new node at head
+ *
  * @param head Head pointer of single linked list
  * @param value Value of node to be inserted
  */
-void TailInsertSLL(SingleLinkedList head, SINGLE_LINKED_LIST_ELEMENT_TYPE value);
+void HeadInsertSLL(SingleLinkedList head, NodeValue value);
 
 /**
- * @brief Insert a new node at head
+ * Insert a new node at tail
+ *
  * @param head Head pointer of single linked list
  * @param value Value of node to be inserted
  */
-void HeadInsertSLL(SingleLinkedList head, SINGLE_LINKED_LIST_ELEMENT_TYPE value);
+void TailInsertSLL(SingleLinkedList head, NodeValue value);
 
 /**
- * @brief Print the single linked list
+ * Delete node at position
+ *
  * @param head Head pointer of single linked list
+ * @param position Position of node, begin with 1
  */
-void PrintSLL(SingleLinkedList head);
+void DeleteNodeAtSLL(SingleLinkedList head, size_t position);
 
 /**
- * @brief  Delete the first nodes with value
+ * Traverse the single linked list
  * @param head Head pointer of single linked list
- * @param value Value of node to be deleted
- * @return Whether the node is deleted
+ * @param for_traversing_node Function pointer to process each node when traversing
  */
-bool DeleteFirstValueInSLL(SingleLinkedList head, SINGLE_LINKED_LIST_ELEMENT_TYPE value);
+void TraverseSLL(SingleLinkedList head, void (*for_traversing_node)(Node));
 
 /**
- * @brief Delete the single linked list, then set pointer on stack to NULL
- * @param head Head pointer of single linked list
+ * Delete the single linked list, set the holder to NULL after
+ *
+ * @param list Pointer of the single linked list holder
  */
-void DestructSLL(SingleLinkedList *head);
+void DeleteSLL(SingleLinkedList *list);
 
 #endif // SINGLE_LINKED_LIST_H

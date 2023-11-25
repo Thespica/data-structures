@@ -12,45 +12,51 @@
 #define PUSH_FULL_STACK_FAIL (POP_EMPTY_STACK_FAIL+1)
 
 /**
- * @brief The stack in memory, implemented by single linked list
+ * The stack in memory, implemented by single linked list
  */
 typedef SingleLinkedList Stack;
 
 /**
- * @brief construct a stackf
+ * construct a stack
+ *
  * @return Pointer of the stack
  */
 Stack ConstructStack(void);
 
 /**
- * @brief Push a new node at top of the stack
+ * Push a new node at top of the stack
+ *
  * @param stack Pointer of the stack
  * @param value Value of new value
  */
 void PushStack(Stack stack, STACK_ELEMENT_TYPE value);
 
 /**
- * @brief Pop the top value of the stack
+ * Pop the top value of the stack
+ *
  * @param stack Pointer of the stack
  * @return Value of the top element in the stack
  */
 STACK_ELEMENT_TYPE PopStack(Stack stack);
 
 /**
- * @brief Get size of the stack
+ * Get size of the stack
+ *
  * @param stack Pointer of the stack
  * @return Size of the stack
  */
 size_t GetStackSize(Stack stack);
 
 /**
- * @brief Print the stack from top to bottom
+ * Print the stack from top to bottom
+ *
  * @param stack Pointer of the stack
  */
 void PrintStack(Stack stack);
 
 /**
- * @brief Destruct the stack
+ * Destruct the stack
+ *
  * @param stack Pointer of the stack on the stack, set to NULL after
  */
 void DestructStack(Stack *stack);

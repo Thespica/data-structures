@@ -10,7 +10,7 @@
 #define PUSH_FULL_STACK_FAIL (POP_EMPTY_STACK_FAIL+1)
 
 /**
- * @brief The array_stack in memory
+ * The array_stack in memory
  */
 struct array_stack {
     STACK_ELEMENT_TYPE *array;
@@ -19,46 +19,52 @@ struct array_stack {
 };
 
 /**
- * @brief The array_stack as pointer, top_idx is -1 when array_stack is empty
+ * The array_stack as pointer, top_idx is -1 when array_stack is empty
  */
 typedef struct array_stack * ArrayStack;
 
 /**
- * @brief Construct a array_stack
+ * Construct a array_stack
+ *
  * @param capacity Capacity of the array_stack
  * @return Pointer of the array_stack
  */
 ArrayStack ConstructStack(size_t capacity);
 
 /**
- * @brief Push a new node at top of the array_stack
+ * Push a new node at top of the array_stack
+ *
  * @param stack Pointer of the array_stack
  * @param value Value of new value
  */
 void PushStack(ArrayStack stack, STACK_ELEMENT_TYPE value);
 
 /**
- * @brief Pop the top value of the array_stack
+ * Pop the top value of the array_stack
+ *
  * @param stack Pointer of the array_stack
  * @return Value of the top element in the array_stack
  */
 STACK_ELEMENT_TYPE PopStack(ArrayStack stack);
 
 /**
- * @brief Get size of the array_stack
+ * Get size of the array_stack
+ *
  * @param stack Pointer of the array_stack
  * @return Size of the array_stack
  */
 size_t GetStackSize(ArrayStack stack);
 
 /**
- * @brief Print the array_stack from top to bottom
+ * Print the array_stack from top to bottom
+ *
  * @param stack Pointer of the array_stack
  */
 void PrintStack(ArrayStack stack);
 
 /**
- * @brief Destruct the array_stack, and set the pointer to NULL after
+ * Destruct the array_stack, and set the pointer to NULL after
+ *
  * @param stack Pointer of the pointer to array_stack
  */
 void DestructStack(ArrayStack *stack);

@@ -8,7 +8,7 @@
 #endif
 
 /**
- * @brief The node of loop double linked list
+ * The node of loop double linked list
  */
 typedef struct node {
     LOOP_DOUBLE_LINKED_LIST_ELEMENT_TYPE value;
@@ -17,32 +17,36 @@ typedef struct node {
 } Node;
 
 /**
- * @brief The head of loop double linked list, which contains a head node with value of number of nodes
+ * The head of loop double linked list, which contains a head node with value of number of nodes
  */
 typedef Node * LoopDoubleLinkedList;
 
 /**
- * @brief Construct a loop double linked list
+ * Construct a loop double linked list
+ *
  * @return Head pointer of loop double linked list
  */
 LoopDoubleLinkedList ConstructDLL(void);
 
 /**
- * @brief Insert a new node at head
+ * Insert a new node at head
+ *
  * @param head Head pointer of loop double linked list
  * @param value Value of new node
  */
 void HeadInsertLDLL(LoopDoubleLinkedList head, LOOP_DOUBLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
- * @brief Insert a new node at tail
+ * Insert a new node at tail
+ *
  * @param head Head pointer of loop double linked list
  * @param value Value of new node
  */
 void TailInsertLDLL(LoopDoubleLinkedList head, LOOP_DOUBLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
- * @brief Delete the first node with value
+ * Delete the first node with value
+ *
  * @param head Head pointer of loop double linked list
  * @param value Value of node to be deleted
  * @return
@@ -50,13 +54,15 @@ void TailInsertLDLL(LoopDoubleLinkedList head, LOOP_DOUBLE_LINKED_LIST_ELEMENT_T
 bool DeleteFirstValueInLDLL(LoopDoubleLinkedList head, LOOP_DOUBLE_LINKED_LIST_ELEMENT_TYPE value);
 
 /**
- * @brief Print loop double linked list
+ * Print loop double linked list
+ *
  * @param head Head pointer of loop double linked list
  */
 void PrintLDLL(LoopDoubleLinkedList head);
 
 /**
- * @brief Delete the loop double linked list
+ * Delete the loop double linked list
+ *
  * @param head Head pointer of loop double linked list
  */
 void DestructLDLL(LoopDoubleLinkedList head);

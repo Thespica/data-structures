@@ -13,7 +13,7 @@ Queue ConstructQueue(void) {
     return queue;
 }
 
-void Enqueue(Queue queue, QUEUE_ELEMENT_TYPE value) {
+void EnQueue(Queue queue, QUEUE_ELEMENT_TYPE value) {
     Node *new_node = (Node *) malloc(sizeof(Node));
     new_node->value = value;
     new_node->next = NULL;
@@ -22,7 +22,7 @@ void Enqueue(Queue queue, QUEUE_ELEMENT_TYPE value) {
     queue->head->value++;
 }
 
-QUEUE_ELEMENT_TYPE Dequeue(Queue queue) {
+QUEUE_ELEMENT_TYPE DeQueue(Queue queue) {
     if (GetQueueSize(queue) == 0) {
         fprintf(stderr, "Error: queue is empty\n");
         exit(DE_EMPTY_QUEUE_FAIL);
