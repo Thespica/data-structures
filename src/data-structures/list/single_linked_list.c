@@ -1,8 +1,6 @@
 #include "data-structures/list/single_linked_list.h"
 
 #include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 #include "data-structures/util/allocator.h"
 #include "data-structures/util/generic.h"
@@ -13,7 +11,7 @@ SingleLinkedList NewSLL(void) {
     return NewNode(NewInt(0), NULL);
 }
 
-int GetNodesNumSLL(SingleLinkedList head) {
+size_t GetSizeSLL(SingleLinkedList head) {
     return GetInt(head->value);
 }
 
@@ -47,18 +45,39 @@ void HeadInsertSLL(SingleLinkedList head, NodeValue value) {
 }
 
 void TailInsertSLL(SingleLinkedList head, NodeValue value) {
-    InsertNodeAtSLL(head, GetNodesNumSLL(head) + 1, value);
+    InsertNodeAtSLL(head, GetSizeSLL(head) + 1, value);
+}
+
+NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
+    if (!position || position > GetSizeSLL(head)) {
+        return NULL;
+    }
+    Node node = GetNodeAtSLL(head, position);
+    NodeValue ret_value = node->value;
+    node->value = value;
+    return ret_value;
+}
+
+NodeValue MoveNodeValueAtSLL(SingleLinkedList head, size_t position) {
+    if (!position || position > GetSizeSLL(head)) {
+        return NULL;
+    }
+    Node front_node = GetNodeAtSLL(head, position - 1);
+    Node node_to_be_moved = front_node->next;
+    front_node->next = front_node->next->next;
+    IntPostDec(head->value);
+    return MoveNodeValue(node_to_be_moved);
 }
 
 void DeleteNodeAtSLL(SingleLinkedList head, size_t position) {
-    if (!position || position > GetNodesNumSLL(head)) {
+    if (!position || position > GetSizeSLL(head)) {
         return;
     }
     Node front_node = GetNodeAtSLL(head, position - 1);
     Node node_to_be_deleted = front_node->next;
     front_node->next = front_node->next->next;
-    allocator_instance.deallocate(node_to_be_deleted);
     IntPostDec(head->value);
+    DeleteNode(node_to_be_deleted);
 }
 
 void TraverseSLL(SingleLinkedList head, void (*for_traversing_node)(Node)) {
@@ -67,12 +86,10 @@ void TraverseSLL(SingleLinkedList head, void (*for_traversing_node)(Node)) {
     }
 }
 
-void DestructSLL(SingleLinkedList *list) {
-    Node current = *list;
-    while (current) {
-        Node node_to_be_deleted = current;
-        current = current->next;
+void DeleteSLL(SingleLinkedList list) {
+    while (list) {
+        Node node_to_be_deleted = list;
+        list = list->next;
         DeleteNode(node_to_be_deleted);
     }
-    *list = NULL;
 }

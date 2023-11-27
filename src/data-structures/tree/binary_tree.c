@@ -1,18 +1,15 @@
-#include <stdlib.h>
-
 #include "data-structures/tree/binary_tree.h"
-#define QUEUE_ELEMENT_TYPE (struct binary_tree_node*)
-#include "data-structures/queue/queue.h"
 
-BinaryTree ConstructBinaryTree(void) {
-    BinaryTree tree = (BinaryTree) malloc(sizeof(struct binary_tree_node));
-    tree->value = 0;
-    tree->left = NULL;
-    tree->right = NULL;
-    return tree;
+#include "data-structures/queue/queue.h"
+#include "data-structures/util/allocator.h"
+
+extern struct allocator allocator_instance;
+
+BinaryTree ConstructBinaryTree(NodeValue value) {
+    return NewTNode(value, NULL, NULL);
 }
 
-void PreOrderTraversal(BinaryTree tree, void (*for_traversing_node)(const struct binary_tree_node *)) {
+void PreOrderTraversal(BinaryTree tree, void (*for_traversing_node)(TNode)) {
     if (!tree) {
         return;
     }
@@ -21,7 +18,7 @@ void PreOrderTraversal(BinaryTree tree, void (*for_traversing_node)(const struct
     PreOrderTraversal(tree->right, for_traversing_node);
 }
 
-void InOrderTraversal(BinaryTree tree, void (*for_traversing_node)(const struct binary_tree_node *)) {
+void InOrderTraversal(BinaryTree tree, void (*for_traversing_node)(TNode)) {
     if (!tree) {
         return;
     }
@@ -30,7 +27,7 @@ void InOrderTraversal(BinaryTree tree, void (*for_traversing_node)(const struct 
     InOrderTraversal(tree->right, for_traversing_node);
 }
 
-void PostOrderTraversal(BinaryTree tree, void (*for_traversing_node)(struct binary_tree_node *)) {
+void PostOrderTraversal(BinaryTree tree, void (*for_traversing_node)(TNode)) {
     if (!tree) {
         return;
     }
@@ -39,8 +36,8 @@ void PostOrderTraversal(BinaryTree tree, void (*for_traversing_node)(struct bina
     for_traversing_node(tree);
 }
 
-void LevelOrderTraversal(BinaryTree tree, void (*for_traversing_node)(const struct binary_tree_node *)) {
-    Queue queen = ConstructQueue();
+void LevelOrderTraversal(BinaryTree tree, void (*for_traversing_node)(TNode)) {
+    Queue queen = NewQueue();
     EnQueue(queen, tree);
     while (GetQueueSize(queen)) {
         BinaryTree node = DeQueue(queen);
@@ -52,14 +49,9 @@ void LevelOrderTraversal(BinaryTree tree, void (*for_traversing_node)(const stru
             EnQueue(queen, node->right);
         }
     }
-    DestructQueue(&queen);
+    DeleteQueue(queen);
 }
 
-static void free_tree_node(struct binary_tree_node *node) {
-    free(node);
-}
-
-void DestructBinaryTree(BinaryTree *tree) {
-    PostOrderTraversal(*tree, free_tree_node);
-    *tree = NULL;
+void DestructBinaryTree(BinaryTree tree) {
+    PostOrderTraversal(tree, DeleteTNode);
 }
