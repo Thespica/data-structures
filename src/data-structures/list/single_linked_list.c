@@ -16,10 +16,10 @@ size_t GetSizeSLL(SingleLinkedList head) {
 }
 
 Node GetNodeAtSLL(SingleLinkedList head, size_t position) {
-    if (position > GetInt(head->value)) {
+    if (position >= GetSizeSLL(head)) {
         return NULL;
     }
-    Node iter_node = head;
+    Node iter_node = head->next;
     for (int i = 0; i < position; i++) {
         iter_node = iter_node->next;
     }
@@ -27,25 +27,21 @@ Node GetNodeAtSLL(SingleLinkedList head, size_t position) {
 }
 
 void InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
-    if (position == 0) {
-        DeleteNode(value);
-        return;
+    if (position >= GetInt(head->value)) {
+        position = GetInt(head->value);
     }
-    if (position > GetInt(head->value) + 1) {
-        position = GetInt(head->value) + 1;
-    }
-    Node front_node = GetNodeAtSLL(head, position - 1);
+    Node front_node = position ? GetNodeAtSLL(head, position - 1) : head;
     Node new_node = NewNode(value, front_node->next);
     front_node->next = new_node;
     IntPostInc(head->value);
 }
 
 void HeadInsertSLL(SingleLinkedList head, NodeValue value) {
-    InsertNodeAtSLL(head, 1, value);
+    InsertNodeAtSLL(head, 0, value);
 }
 
 void TailInsertSLL(SingleLinkedList head, NodeValue value) {
-    InsertNodeAtSLL(head, GetSizeSLL(head) + 1, value);
+    InsertNodeAtSLL(head, GetSizeSLL(head), value);
 }
 
 NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position, NodeValue value) {

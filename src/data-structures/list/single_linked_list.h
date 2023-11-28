@@ -26,19 +26,19 @@ SingleLinkedList NewSLL(void);
 size_t GetSizeSLL(SingleLinkedList head);
 
 /**
- * Get node at position
+ * Get node at position, not include head node, begin with 0
  *
  * @param head Head pointer of single linked list
- * @param position Position of node, begin with 1
+ * @param position Position of node, begin with 0
  * @return Node pointer
  */
 Node GetNodeAtSLL(SingleLinkedList head, size_t position);
 
 /**
- * Insert a node at position, begin with 1
+ * Insert a node at position, begin with 0
  *
  * @param head Head pointer of single linked list
- * @param position Position of node, begin with 1
+ * @param position Position of node, begin with 0
  * @param value Pointer to actual value in heap
  */
 void InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value);
@@ -63,7 +63,7 @@ void TailInsertSLL(SingleLinkedList head, NodeValue value);
  * Replace node value at position, the original value must be hold or free
  *
  * @param head Head pointer of single linked list
- * @param position Position of node, begin with 1
+ * @param position Position of node, begin with 0
  * @param value Pointer to actual value in heap
  * @return Pointer to the original value, which must be hold or free
  */
@@ -74,7 +74,7 @@ NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position, NodeValu
  * The value must be hold or free after.
  *
  * @param head Head pointer of single linked list
- * @param position Position of node, begin with 1
+ * @param position Position of node, begin with 0
  * @return Pointer to the actual value in heap, which must be hold or free
  */
 NodeValue MoveNodeValueAtSLL(SingleLinkedList head, size_t position);
@@ -83,7 +83,7 @@ NodeValue MoveNodeValueAtSLL(SingleLinkedList head, size_t position);
  * Delete node at position
  *
  * @param head Head pointer of single linked list
- * @param position Position of node, begin with 1
+ * @param position Position of node, begin with 0
  */
 void DeleteNodeAtSLL(SingleLinkedList head, size_t position);
 
