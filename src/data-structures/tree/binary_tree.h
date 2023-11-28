@@ -1,7 +1,7 @@
 #ifndef DATA_STRUCT_BINARY_TREE_H
 #define DATA_STRUCT_BINARY_TREE_H
 
-#include "data-structures/util/nodes.h"
+#include "data-structures/base/nodes.h"
 
 /**
  * The binary tree as pointer
@@ -54,6 +54,5 @@ void LevelOrderTraversal(BinaryTree tree, void (*for_traversing_node)(TNode));
  * @param tree Pointer of the binary tree
  */
 void DestructBinaryTree(BinaryTree tree);
-
 
 #endif //DATA_STRUCT_BINARY_TREE_H

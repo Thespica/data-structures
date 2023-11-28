@@ -4,10 +4,10 @@
 #include <stdlib.h>
 
 #include "data-structures/list/single_linked_list.h"
-#include "data-structures/util/allocator.h"
+#include "data-structures/memory/allocator.h"
 #include "data-structures/util/error_code.h"
 #include "data-structures/util/generic.h"
-#include "data-structures/util/nodes.h"
+#include "data-structures/base/nodes.h"
 
 extern struct allocator allocator_instance;
 

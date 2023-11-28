@@ -1,6 +1,6 @@
 #include "data-structures/util/generic.h"
 
-#include "data-structures/util/allocator.h"
+#include "data-structures/memory/allocator.h"
 
 extern struct allocator allocator_instance;
 

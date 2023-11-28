@@ -4,7 +4,7 @@
 #include <stddef.h>
 
 #include "data-structures/list/single_linked_list.h"
-#include "data-structures/util/nodes.h"
+#include "data-structures/base/nodes.h"
 
 /**
  * The queue, which contains a head node with value of number of nodes

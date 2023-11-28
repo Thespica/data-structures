@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 
-#include "data-structures/util/nodes.h"
+#include "data-structures/base/nodes.h"
 
 /**
  * The single linked list as a whole, which always points to the head node

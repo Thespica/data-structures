@@ -5,9 +5,12 @@
 
 /**
  * The allocator interface, which is used to allocate and deallocate memory
+ * The behavior of allocate, reallocate and deallocate
+ * should similar to malloc, realloc and free
  */
 struct allocator {
     void* (*const allocate)(size_t size);
+    void* (*const reallocate)(void* ptr, size_t size);
     void (*const deallocate)(void* ptr);
 };
 

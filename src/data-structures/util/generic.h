@@ -53,5 +53,4 @@ int IntPrefDec(void *ptr);
  */
 int IntPostDec(void *ptr);
 
-
 #endif //DATA_STRUCT_GENERIC_H

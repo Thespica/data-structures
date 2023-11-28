@@ -1,7 +1,7 @@
 #include "data-structures/tree/binary_tree.h"
 
 #include "data-structures/queue/queue.h"
-#include "data-structures/util/allocator.h"
+#include "data-structures/memory/allocator.h"
 
 extern struct allocator allocator_instance;
 
