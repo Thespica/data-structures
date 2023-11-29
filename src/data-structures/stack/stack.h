@@ -4,7 +4,6 @@
 #include <stddef.h>
 
 #include "data-structures/list/single_linked_list.h"
-#include "data-structures/util/error_code.h"
 #include "data-structures/base/nodes.h"
 
 /**

@@ -27,7 +27,7 @@ NodeValue DeQueue(Queue queue) {
         fprintf(stderr, "Error: queue is empty\n");
         exit(DE_EMPTY_QUEUE_FAIL);
     }
-    Node node_to_delete = GetNodeAtSLL(queue->head, 1);
+    Node node_to_delete = GetNodeAtSLL(queue->head, 0);
     queue->head->next = queue->head->next->next;
     NodeValue value = node_to_delete->value;
     IntPostDec(queue->head->value);

@@ -67,7 +67,8 @@ void TailInsertSLL(SingleLinkedList head, NodeValue value);
  * @param value Pointer to actual value in heap
  * @return Pointer to the original value, which must be hold or free
  */
-NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position, NodeValue value);
+NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position,
+                                NodeValue value);
 
 /**
  * Move node value at position, the node itself will be free.
@@ -91,15 +92,17 @@ void DeleteNodeAtSLL(SingleLinkedList head, size_t position);
  * Traverse the single linked list
  *
  * @param head Head pointer of single linked list
- * @param for_traversing_node Function pointer to process each node when traversing
+ * @param for_traversing_node Function pointer to process each node when
+ * traversing
  */
 void TraverseSLL(SingleLinkedList head, void (*for_traversing_node)(Node));
 
 /**
- * Delete the single linked list, suggest to set the original list holder to NULL after
+ * Delete the single linked list, suggest to set the original list holder to
+ * NULL after
  *
  * @param list Pointer to the single linked list in heap
  */
 void DeleteSLL(SingleLinkedList list);
 
-#endif // SINGLE_LINKED_LIST_H
+#endif  // SINGLE_LINKED_LIST_H

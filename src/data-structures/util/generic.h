@@ -53,4 +53,11 @@ int IntPrefDec(void *ptr);
  */
 int IntPostDec(void *ptr);
 
+/**
+ * Delete the Integer in heap, and return its value
+ *
+ * @param ptr Void pointer but actually point to an Integer
+ * @return Value of the Integer
+ */
+int DeleteAndGetInt(void *ptr);
 #endif //DATA_STRUCT_GENERIC_H

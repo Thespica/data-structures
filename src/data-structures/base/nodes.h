@@ -2,7 +2,8 @@
 #define DATA_STRUCT_NODES_H
 
 /**
- * The value of a node, which is a void pointer holding the actual value for runtime generic.
+ * The value of a node, which is a void pointer holding the actual value for
+ * runtime generic.
  */
 typedef void *NodeValue;
 
@@ -40,8 +41,8 @@ Node NewNode(NodeValue value, Node next);
 NodeValue ReplaceNodeValue(Node node, NodeValue value);
 
 /**
- * Move the value of a node, the node itself will be free, suggest to set the original node holder to NULL after.
- * The value must be hold or free after.
+ * Move the value of a node, the node itself will be free, suggest to set the
+ * original node holder to NULL after. The value must be hold or free after.
  *
  * @param node The node in heap
  * @return Pointer of the actual value in heap, which must be hold or free
@@ -49,7 +50,8 @@ NodeValue ReplaceNodeValue(Node node, NodeValue value);
 NodeValue MoveNodeValue(Node node);
 
 /**
- * Delete the node in heap, , suggest to set the original t_node holder to NULL after
+ * Delete the node in heap, , suggest to set the original t_node holder to NULL
+ * after
  *
  * @param node Pointer of the node holder
  */
@@ -90,8 +92,9 @@ TNode NewTNode(NodeValue value, TNode left, TNode right);
 NodeValue ReplaceTNodeValue(TNode t_node, NodeValue value);
 
 /**
- * Move the value of a t_node, the t_node itself will be free, suggest to set the original t_node holder to NULL after.
- * The value must be hold or free after.
+ * Move the value of a t_node, the t_node itself will be free, suggest to set
+ * the original t_node holder to NULL after. The value must be hold or free
+ * after.
  *
  * @param t_node The t_node in heap
  * @return Pointer of the actual value in heap, which must be hold or free
@@ -99,10 +102,11 @@ NodeValue ReplaceTNodeValue(TNode t_node, NodeValue value);
 NodeValue MoveTNodeValue(TNode t_node);
 
 /**
- * Delete the t_node in heap, suggest to set the original t_node holder to NULL after
+ * Delete the t_node in heap, suggest to set the original t_node holder to NULL
+ * after
  *
  * @param t_node Pointer of the t_node
  */
 void DeleteTNode(TNode t_node);
 
-#endif //DATA_STRUCT_NODES_H
+#endif  // DATA_STRUCT_NODES_H

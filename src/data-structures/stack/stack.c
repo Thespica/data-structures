@@ -9,7 +9,7 @@
 
 extern struct allocator allocator_instance;
 
-Stack ConstructStack(void) {
+Stack NewStack(void) {
     return NewSLL();
 }
 
@@ -22,7 +22,7 @@ NodeValue PopStack(Stack stack) {
         fprintf(stderr, "Stack is empty!\n");
         exit(POP_EMPTY_STACK_FAIL);
     }
-    return MoveNodeValueAtSLL(stack, 1);
+    return MoveNodeValueAtSLL(stack, 0);
 }
 
 size_t GetStackSize(Stack stack) {
@@ -30,7 +30,7 @@ size_t GetStackSize(Stack stack) {
 }
 
 void TraverseStack(Stack stack, void (*for_traversing_node)(Node)) {
-    TraverseSLL(stack, for_traversing_node);
+    TraverseSLL(stack->next, for_traversing_node);
 }
 
 void DeleteStack(Stack stack) {

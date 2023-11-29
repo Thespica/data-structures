@@ -7,13 +7,9 @@
 
 extern struct allocator allocator_instance;
 
-SingleLinkedList NewSLL(void) {
-    return NewNode(NewInt(0), NULL);
-}
+SingleLinkedList NewSLL(void) { return NewNode(NewInt(0), NULL); }
 
-size_t GetSizeSLL(SingleLinkedList head) {
-    return GetInt(head->value);
-}
+size_t GetSizeSLL(SingleLinkedList head) { return GetInt(head->value); }
 
 Node GetNodeAtSLL(SingleLinkedList head, size_t position) {
     if (position >= GetSizeSLL(head)) {
@@ -44,7 +40,8 @@ void TailInsertSLL(SingleLinkedList head, NodeValue value) {
     InsertNodeAtSLL(head, GetSizeSLL(head), value);
 }
 
-NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
+NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position,
+                                NodeValue value) {
     if (!position || position > GetSizeSLL(head)) {
         return NULL;
     }
@@ -55,10 +52,10 @@ NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position, NodeValu
 }
 
 NodeValue MoveNodeValueAtSLL(SingleLinkedList head, size_t position) {
-    if (!position || position > GetSizeSLL(head)) {
+    if (position >= GetSizeSLL(head)) {
         return NULL;
     }
-    Node front_node = GetNodeAtSLL(head, position - 1);
+    Node front_node = position ? head : GetNodeAtSLL(head, position);
     Node node_to_be_moved = front_node->next;
     front_node->next = front_node->next->next;
     IntPostDec(head->value);

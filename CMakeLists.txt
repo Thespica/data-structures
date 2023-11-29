@@ -24,4 +24,6 @@ if (${BUILD_TESTING})
     endmacro()
 
     add_test_executable(test_single_linked_list)
+    add_test_executable(test_queue)
+    add_test_executable(test_stack)
 endif ()

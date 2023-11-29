@@ -1,15 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 #include "util.h"
 
 #include "data-structures/list/single_linked_list.h"
-#include "data-structures/memory/allocator.h"
 #include "data-structures/util/generic.h"
-
-static void PrintIntNode(Node node) {
-    printf("%d ", GetInt(node->value));
-}
 
 int main(void) {
     SingleLinkedList list = NewSLL();
