@@ -1,6 +1,8 @@
 #ifndef DATA_STRUCT_GENERIC_H
 #define DATA_STRUCT_GENERIC_H
 
+#include <stdbool.h>
+
 /**
  * Construct a integer in heap
  *
@@ -60,4 +62,20 @@ int IntPostDec(void *ptr);
  * @return Value of the Integer
  */
 int DeleteAndGetInt(void *ptr);
+
+/**
+ * @brief Compare two integers
+ *
+ * @param ptr1 Void pointer but actually point to an Integer
+ * @param ptr2 Void pointer but actually point to an Integer
+ */
+bool IntCmp(void *ptr1, void *ptr2);
+
+/**
+ * @brief Compare two integers is equal
+ *
+ * @param ptr1 Void pointer but actually point to an Integer
+ * @param ptr2 Void pointer but actually point to an Integer
+ */
+bool IntEq(void *ptr1, void *ptr2);
 #endif //DATA_STRUCT_GENERIC_H

@@ -1,6 +1,8 @@
 #ifndef DATA_STRUCT_NODES_H
 #define DATA_STRUCT_NODES_H
 
+#include <stdbool.h>
+
 /**
  * The value of a node, which is a void pointer holding the actual value for
  * runtime generic.

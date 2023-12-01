@@ -1,13 +1,11 @@
 #include "data-structures/tree/binary_tree.h"
 
-#include "data-structures/queue/queue.h"
 #include "data-structures/memory/allocator.h"
+#include "data-structures/queue/queue.h"
 
 extern struct allocator allocator_instance;
 
-BinaryTree ConstructBinaryTree(NodeValue value) {
-    return NewTNode(value, NULL, NULL);
-}
+BinaryTree NewBinaryTree(NodeValue value) { return NewTNode(value, NULL, NULL); }
 
 void PreOrderTraversal(BinaryTree tree, void (*for_traversing_node)(TNode)) {
     if (!tree) {
@@ -52,6 +50,4 @@ void LevelOrderTraversal(BinaryTree tree, void (*for_traversing_node)(TNode)) {
     DeleteQueue(queen);
 }
 
-void DestructBinaryTree(BinaryTree tree) {
-    PostOrderTraversal(tree, DeleteTNode);
-}
+void DeleteBinaryTree(BinaryTree tree) { PostOrderTraversal(tree, DeleteTNode); }

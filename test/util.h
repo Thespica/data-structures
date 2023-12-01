@@ -13,4 +13,6 @@ struct allocator allocator_instance = {
 
 void PrintIntNode(Node node) { printf("%d ", GetInt(node->value)); }
 
+void PrintIntTNode(TNode t_node) { printf("%d ", GetInt(t_node->value)); }
+
 #endif  // DATA_STRUCT_UTIL_H

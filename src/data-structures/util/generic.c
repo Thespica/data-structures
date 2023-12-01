@@ -1,7 +1,7 @@
 #include "data-structures/util/generic.h"
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "data-structures/memory/allocator.h"
 #include "data-structures/util/error_code.h"
@@ -14,17 +14,17 @@ int *NewInt(int value) {
     return ptr;
 }
 
-void SetInt(void *ptr, int value) { *((int *)ptr) = value; }
+void SetInt(void *ptr, int value) { *(int *)ptr = value; }
 
-int GetInt(void *ptr) { return *((int *)ptr); }
+int GetInt(void *ptr) { return *(int *)ptr; }
 
-int IntPrefInc(void *ptr) { return ++(*((int *)ptr)); }
+int IntPrefInc(void *ptr) { return ++(*(int *)ptr); }
 
-int IntPostInc(void *ptr) { return (*((int *)ptr))++; }
+int IntPostInc(void *ptr) { return (*(int *)ptr)++; }
 
-int IntPrefDec(void *ptr) { return --(*((int *)ptr)); }
+int IntPrefDec(void *ptr) { return --(*(int *)ptr); }
 
-int IntPostDec(void *ptr) { return (*((int *)ptr))--; }
+int IntPostDec(void *ptr) { return (*(int *)ptr)--; }
 
 int DeleteAndGetInt(void *ptr) {
     if (!ptr) {
@@ -34,4 +34,12 @@ int DeleteAndGetInt(void *ptr) {
     const int value = *(int *)ptr;
     allocator_instance.deallocate(ptr);
     return value;
+}
+
+bool IntCmp(void *ptr1, void *ptr2) {
+    return GetInt(ptr1) < GetInt(ptr2);
+}
+
+bool IntEq(void *ptr1, void *ptr2) {
+    return GetInt(ptr1) == GetInt(ptr2);
 }

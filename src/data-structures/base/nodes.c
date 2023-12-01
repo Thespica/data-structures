@@ -5,7 +5,7 @@
 extern struct allocator allocator_instance;
 
 Node NewNode(NodeValue value, Node next) {
-    Node new_node = (Node) allocator_instance.allocate(sizeof(struct node));
+    Node new_node = (Node)allocator_instance.allocate(sizeof(struct node));
     new_node->value = value;
     new_node->next = next;
     return new_node;
@@ -29,7 +29,8 @@ void DeleteNode(Node node) {
 }
 
 TNode NewTNode(NodeValue value, TNode left, TNode right) {
-    TNode new_t_node = (TNode) allocator_instance.allocate(sizeof(struct t_node));
+    TNode new_t_node =
+        (TNode)allocator_instance.allocate(sizeof(struct t_node));
     new_t_node->value = value;
     new_t_node->left = left;
     new_t_node->right = right;

@@ -7,11 +7,18 @@
 
 extern struct allocator allocator_instance;
 
-SingleLinkedList NewSLL(void) { return NewNode(NewInt(0), NULL); }
+SingleLinkedList
+NewSLL(void) {
+    return NewNode(NewInt(0), NULL);
+}
 
-size_t GetSizeSLL(SingleLinkedList head) { return GetInt(head->value); }
+size_t
+GetSizeSLL(SingleLinkedList head) {
+    return GetInt(head->value);
+}
 
-Node GetNodeAtSLL(SingleLinkedList head, size_t position) {
+Node
+GetNodeAtSLL(SingleLinkedList head, size_t position) {
     if (position >= GetSizeSLL(head)) {
         return NULL;
     }
@@ -22,7 +29,8 @@ Node GetNodeAtSLL(SingleLinkedList head, size_t position) {
     return iter_node;
 }
 
-void InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
+void
+InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
     if (position >= GetInt(head->value)) {
         position = GetInt(head->value);
     }
@@ -32,16 +40,18 @@ void InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
     IntPostInc(head->value);
 }
 
-void HeadInsertSLL(SingleLinkedList head, NodeValue value) {
+void
+HeadInsertSLL(SingleLinkedList head, NodeValue value) {
     InsertNodeAtSLL(head, 0, value);
 }
 
-void TailInsertSLL(SingleLinkedList head, NodeValue value) {
+void
+TailInsertSLL(SingleLinkedList head, NodeValue value) {
     InsertNodeAtSLL(head, GetSizeSLL(head), value);
 }
 
-NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position,
-                                NodeValue value) {
+NodeValue
+ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
     if (!position || position > GetSizeSLL(head)) {
         return NULL;
     }
@@ -51,7 +61,8 @@ NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position,
     return ret_value;
 }
 
-NodeValue MoveNodeValueAtSLL(SingleLinkedList head, size_t position) {
+NodeValue
+MoveNodeValueAtSLL(SingleLinkedList head, size_t position) {
     if (position >= GetSizeSLL(head)) {
         return NULL;
     }
@@ -62,7 +73,8 @@ NodeValue MoveNodeValueAtSLL(SingleLinkedList head, size_t position) {
     return MoveNodeValue(node_to_be_moved);
 }
 
-void DeleteNodeAtSLL(SingleLinkedList head, size_t position) {
+void
+DeleteNodeAtSLL(SingleLinkedList head, size_t position) {
     if (!position || position > GetSizeSLL(head)) {
         return;
     }
@@ -73,13 +85,15 @@ void DeleteNodeAtSLL(SingleLinkedList head, size_t position) {
     DeleteNode(node_to_be_deleted);
 }
 
-void TraverseSLL(SingleLinkedList head, void (*for_traversing_node)(Node)) {
+void
+TraverseSLL(SingleLinkedList head, void (*for_traversing_node)(Node)) {
     for (Node iter = head->next; iter; iter = iter->next) {
         for_traversing_node(iter);
     }
 }
 
-void DeleteSLL(SingleLinkedList list) {
+void
+DeleteSLL(SingleLinkedList list) {
     while (list) {
         Node node_to_be_deleted = list;
         list = list->next;

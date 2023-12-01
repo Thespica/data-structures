@@ -14,7 +14,7 @@ typedef TNode BinaryTree;
  * @param value Value of root node
  * @return Pointer of the binary tree
  */
-BinaryTree ConstructBinaryTree(NodeValue value);
+BinaryTree NewBinaryTree(NodeValue value);
 
 /**
  * Pre order traversal the binary tree
@@ -53,6 +53,6 @@ void LevelOrderTraversal(BinaryTree tree, void (*for_traversing_node)(TNode));
  *
  * @param tree Pointer of the binary tree
  */
-void DestructBinaryTree(BinaryTree tree);
+void DeleteBinaryTree(BinaryTree tree);
 
 #endif //DATA_STRUCT_BINARY_TREE_H
