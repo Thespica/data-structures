@@ -7,7 +7,7 @@
  * The value of a node, which is a void pointer holding the actual value for
  * runtime generic.
  */
-typedef void *NodeValue;
+typedef void* NodeValue;
 
 /**
  * The node with one value and one pointer to next node.
@@ -16,13 +16,13 @@ typedef void *NodeValue;
  */
 struct node {
     NodeValue value;
-    struct node *next;
+    struct node* next;
 };
 
 /**
  * The node as a whole, which is a pointer to the actual node.
  */
-typedef struct node *Node;
+typedef struct node* Node;
 
 /**
  * Construct a node in heap
@@ -65,14 +65,14 @@ void DeleteNode(Node node);
  */
 struct t_node {
     NodeValue value;
-    struct t_node *left;
-    struct t_node *right;
+    struct t_node* left;
+    struct t_node* right;
 };
 
 /**
  * The t_node as a whole, which is a pointer to the actual t_node.
  */
-typedef struct t_node *TNode;
+typedef struct t_node* TNode;
 
 /**
  * Construct a t_node in heap

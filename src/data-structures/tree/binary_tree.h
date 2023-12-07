@@ -2,6 +2,7 @@
 #define DATA_STRUCT_BINARY_TREE_H
 
 #include "data-structures/base/nodes.h"
+#include "data-structures/list/single_linked_list.h"
 
 /**
  * The binary tree as pointer
@@ -15,6 +16,8 @@ typedef TNode BinaryTree;
  * @return Pointer of the binary tree
  */
 BinaryTree NewBinaryTree(NodeValue value);
+
+BinaryTree NewBinaryTreeFromPreOrderList(SingleLinkedList pre_order_list);
 
 /**
  * Pre order traversal the binary tree

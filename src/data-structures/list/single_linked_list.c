@@ -7,18 +7,11 @@
 
 extern struct allocator allocator_instance;
 
-SingleLinkedList
-NewSLL(void) {
-    return NewNode(NewInt(0), NULL);
-}
+SingleLinkedList NewSLL(void) { return NewNode(NewInt(0), NULL); }
 
-size_t
-GetSizeSLL(SingleLinkedList head) {
-    return GetInt(head->value);
-}
+size_t GetSizeSLL(SingleLinkedList head) { return GetInt(head->value); }
 
-Node
-GetNodeAtSLL(SingleLinkedList head, size_t position) {
+Node GetNodeAtSLL(SingleLinkedList head, size_t position) {
     if (position >= GetSizeSLL(head)) {
         return NULL;
     }
@@ -29,8 +22,7 @@ GetNodeAtSLL(SingleLinkedList head, size_t position) {
     return iter_node;
 }
 
-void
-InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
+void InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
     if (position >= GetInt(head->value)) {
         position = GetInt(head->value);
     }
@@ -40,60 +32,61 @@ InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
     IntPostInc(head->value);
 }
 
-void
-HeadInsertSLL(SingleLinkedList head, NodeValue value) {
-    InsertNodeAtSLL(head, 0, value);
-}
+void HeadInsertSLL(SingleLinkedList head, NodeValue value) { InsertNodeAtSLL(head, 0, value); }
 
-void
-TailInsertSLL(SingleLinkedList head, NodeValue value) {
+void TailInsertSLL(SingleLinkedList head, NodeValue value) {
     InsertNodeAtSLL(head, GetSizeSLL(head), value);
 }
 
-NodeValue
-ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
+NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
     if (!position || position > GetSizeSLL(head)) {
         return NULL;
     }
     Node node = GetNodeAtSLL(head, position);
+    if (!node) {
+        return NULL;
+    }
     NodeValue ret_value = node->value;
     node->value = value;
     return ret_value;
 }
 
-NodeValue
-MoveNodeValueAtSLL(SingleLinkedList head, size_t position) {
+NodeValue MoveNodeValueAtSLL(SingleLinkedList head, size_t position) {
     if (position >= GetSizeSLL(head)) {
         return NULL;
     }
-    Node front_node = position ? head : GetNodeAtSLL(head, position);
+    Node front_node = position ? GetNodeAtSLL(head, position) : head;
     Node node_to_be_moved = front_node->next;
     front_node->next = front_node->next->next;
     IntPostDec(head->value);
     return MoveNodeValue(node_to_be_moved);
 }
 
-void
-DeleteNodeAtSLL(SingleLinkedList head, size_t position) {
+NodeValue PopHeadSLL(SingleLinkedList head) {
+    return MoveNodeValueAtSLL(head, 0);
+}
+
+void DeleteNodeAtSLL(SingleLinkedList head, size_t position) {
     if (!position || position > GetSizeSLL(head)) {
         return;
     }
     Node front_node = GetNodeAtSLL(head, position - 1);
+    if (!front_node) {
+        return;
+    }
     Node node_to_be_deleted = front_node->next;
     front_node->next = front_node->next->next;
     IntPostDec(head->value);
     DeleteNode(node_to_be_deleted);
 }
 
-void
-TraverseSLL(SingleLinkedList head, void (*for_traversing_node)(Node)) {
+void TraverseSLL(SingleLinkedList head, void (*for_traversing_node)(Node)) {
     for (Node iter = head->next; iter; iter = iter->next) {
         for_traversing_node(iter);
     }
 }
 
-void
-DeleteSLL(SingleLinkedList list) {
+void DeleteSLL(SingleLinkedList list) {
     while (list) {
         Node node_to_be_deleted = list;
         list = list->next;

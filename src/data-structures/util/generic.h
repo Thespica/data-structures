@@ -4,12 +4,17 @@
 #include <stdbool.h>
 
 /**
+ * The generic interface for integer
+ */
+typedef void* Int;
+
+/**
  * Construct a integer in heap
  *
  * @param value Value of integer
  * @return Pointer of the integer
  */
-int *NewInt(int value);
+int* NewInt(int value);
 
 /**
  * Set the value of the Integer
@@ -17,7 +22,7 @@ int *NewInt(int value);
  * @param ptr
  * @param value
  */
-void SetInt(void *ptr, int value);
+void SetInt(Int ptr, int value);
 
 /**
  * Get the value of the Integer
@@ -25,35 +30,39 @@ void SetInt(void *ptr, int value);
  * @param ptr Void pointer but actually point to an Integer
  * @return int Value of the Integer
  */
-int GetInt(void *ptr);
+int GetInt(Int ptr);
 
 /**
  * Incrementing the Integer by 1, return value of the Integer + 1
+ *
  * @param ptr Void pointer but actually point to an Integer
  * @return Value of the Integer + 1
  */
-int IntPrefInc(void *ptr);
+int IntPrefInc(Int ptr);
 
 /**
  * Incrementing the Integer by 1, return the value of the Integer
+ *
  * @param ptr Void pointer but actually point to an Integer
  * @return Value of the Integer
  */
-int IntPostInc(void *ptr);
+int IntPostInc(Int ptr);
 
 /**
  * Decrementing the Integer by 1, return value of the Integer - 1
+ *
  * @param ptr Void pointer but actually point to an Integer
  * @return Value of the Integer - 1
  */
-int IntPrefDec(void *ptr);
+int IntPrefDec(Int ptr);
 
 /**
  * Decrementing the Integer by 1, return the value of the Integer
+ *
  * @param ptr Void pointer but actually point to an Integer
  * @return Value of the Integer
  */
-int IntPostDec(void *ptr);
+int IntPostDec(Int ptr);
 
 /**
  * Delete the Integer in heap, and return its value
@@ -61,7 +70,7 @@ int IntPostDec(void *ptr);
  * @param ptr Void pointer but actually point to an Integer
  * @return Value of the Integer
  */
-int DeleteAndGetInt(void *ptr);
+int DeleteAndGetInt(Int ptr);
 
 /**
  * @brief Compare two integers
@@ -69,7 +78,7 @@ int DeleteAndGetInt(void *ptr);
  * @param ptr1 Void pointer but actually point to an Integer
  * @param ptr2 Void pointer but actually point to an Integer
  */
-bool IntCmp(void *ptr1, void *ptr2);
+bool IntCmp(Int ptr1, Int ptr2);
 
 /**
  * @brief Compare two integers is equal
@@ -77,5 +86,5 @@ bool IntCmp(void *ptr1, void *ptr2);
  * @param ptr1 Void pointer but actually point to an Integer
  * @param ptr2 Void pointer but actually point to an Integer
  */
-bool IntEq(void *ptr1, void *ptr2);
-#endif //DATA_STRUCT_GENERIC_H
+bool IntEq(Int ptr1, Int ptr2);
+#endif  // DATA_STRUCT_GENERIC_H

@@ -80,6 +80,8 @@ NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position,
  */
 NodeValue MoveNodeValueAtSLL(SingleLinkedList head, size_t position);
 
+NodeValue PopHeadSLL(SingleLinkedList head);
+
 /**
  * Delete node at position
  *

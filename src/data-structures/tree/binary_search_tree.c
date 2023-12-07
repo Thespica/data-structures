@@ -45,18 +45,20 @@ BinarySearchTree NewBST(NodeValue value, bool (*compare)(NodeValue small, NodeVa
     return new_bst;
 }
 
-TNode FindTNodeInBST(BinarySearchTree tree, NodeValue value) {
-    TNode iter_node = tree->tree;
-    while (iter_node) {
-        if (tree->eq(iter_node->value, value)) {
-            return iter_node;
+TNode* GetEqualNodeHolderInBST(BinarySearchTree tree, NodeValue value) {
+    TNode* iter_node_holder = &tree->tree;
+    while (!tree->eq((*iter_node_holder)->value, value)) {
+        iter_node_holder = tree->compare((*iter_node_holder)->value, value)
+                                ? &(*iter_node_holder)->right
+                                : &(*iter_node_holder)->left;
+        if (!*iter_node_holder) {
+            return NULL;
         }
-        iter_node = tree->compare(iter_node->value, value) ? iter_node->right : iter_node->left;
     }
-    return NULL;
+    return iter_node_holder;
 }
 
-NodeValue FindMinValueInBST(BinarySearchTree tree) {
+NodeValue GetMinValueInBST(BinarySearchTree tree) {
     TNode iter_node = tree->tree;
     while (iter_node->left) {
         iter_node = iter_node->left;
@@ -64,7 +66,7 @@ NodeValue FindMinValueInBST(BinarySearchTree tree) {
     return iter_node->value;
 }
 
-NodeValue FindMaxValueInBST(BinarySearchTree tree) {
+NodeValue GetMaxValueInBST(BinarySearchTree tree) {
     TNode iter_node = tree->tree;
     while (iter_node->right) {
         iter_node = iter_node->right;
@@ -73,34 +75,32 @@ NodeValue FindMaxValueInBST(BinarySearchTree tree) {
 }
 
 void InsertValueInBST(BinarySearchTree tree, NodeValue value) {
-    TNode* ptr_to_change = &tree->tree;
-    for (TNode iter_node = tree->tree; iter_node; iter_node = *ptr_to_change) {
-        if (tree->eq(iter_node->value, value)) {
+    TNode* iter_node_holder = &tree->tree;
+    while (*iter_node_holder) {
+        if (tree->eq((*iter_node_holder)->value, value)) {
             return;
         }
-        ptr_to_change =
-            tree->compare(iter_node->value, value) ? &iter_node->right : &iter_node->left;
+        iter_node_holder = tree->compare((*iter_node_holder)->value, value) ? &(*iter_node_holder)->right
+                                                                      : &(*iter_node_holder)->left;
     }
-    *ptr_to_change = NewTNode(value, NULL, NULL);
+    *iter_node_holder = NewTNode(value, NULL, NULL);
 }
 
 void DeleteNodeInBST(BinarySearchTree tree, NodeValue value) {
-    TNode* equal_node_holder = &tree->tree;
-    while (!tree->eq((*equal_node_holder)->value, value)) {
-        equal_node_holder = tree->compare((*equal_node_holder)->value, value)
-                                ? &(*equal_node_holder)->right
-                                : &(*equal_node_holder)->left;
+    TNode* equal_node_holder = GetEqualNodeHolderInBST(tree, value);
+    if (!*equal_node_holder) {
+        return;
     }
     /*
      * left   right   situation
-     * ptr  + ptr  -> 0
+     * NULL + NULL -> 0
      * NULL + ptr  -> 1
      * ptr  + NULL -> 2
-     * NULL + NULL -> 3
+     * ptr  + ptr  -> 3
      */
-    switch ((!(*equal_node_holder)->left << 1) + !(*equal_node_holder)->right) {
+    switch ((!!(*equal_node_holder)->left << 1) + !!(*equal_node_holder)->right) {
         case 0:
-            __ReplaceEqNodeByRightMin(equal_node_holder);
+            __DeleteEqNodeAsLeaf(equal_node_holder);
             return;
         case 1:
             __ReplaceEqNodeByRight(equal_node_holder);
@@ -109,11 +109,7 @@ void DeleteNodeInBST(BinarySearchTree tree, NodeValue value) {
             __ReplaceEqNodeByLeft(equal_node_holder);
             return;
         case 3:
-            __DeleteEqNodeAsLeaf(equal_node_holder);
-            return;
-        default:
-            fprintf(stderr, "Error: unexpected situation in DeleteNodeInBST\n");
-            exit(666);
+            __ReplaceEqNodeByRightMin(equal_node_holder);
     }
 }
 

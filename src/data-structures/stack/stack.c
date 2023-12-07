@@ -9,13 +9,11 @@
 
 extern struct allocator allocator_instance;
 
-Stack NewStack(void) {
-    return NewSLL();
-}
+Stack NewStack(void) { return NewSLL(); }
 
-void PushStack(Stack stack, NodeValue value) {
-    HeadInsertSLL(stack, value);
-}
+NodeValue TopStack(Stack stack) { return GetStackSize(stack) ? stack->next->value : NULL; }
+
+void PushStack(Stack stack, NodeValue value) { HeadInsertSLL(stack, value); }
 
 NodeValue PopStack(Stack stack) {
     if (GetStackSize(stack) == 0) {
@@ -25,14 +23,10 @@ NodeValue PopStack(Stack stack) {
     return MoveNodeValueAtSLL(stack, 0);
 }
 
-size_t GetStackSize(Stack stack) {
-    return GetSizeSLL(stack);
-}
+size_t GetStackSize(Stack stack) { return GetSizeSLL(stack); }
 
 void TraverseStack(Stack stack, void (*for_traversing_node)(Node)) {
     TraverseSLL(stack->next, for_traversing_node);
 }
 
-void DeleteStack(Stack stack) {
-    DeleteSLL(stack);
-}
+void DeleteStack(Stack stack) { DeleteSLL(stack); }

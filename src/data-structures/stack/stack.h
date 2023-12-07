@@ -18,6 +18,8 @@ typedef SingleLinkedList Stack;
  */
 Stack NewStack(void);
 
+NodeValue TopStack(Stack stack);
+
 /**
  * Push a new node at top of the stack
  *

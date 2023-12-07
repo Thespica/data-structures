@@ -4,9 +4,10 @@
 #include <stddef.h>
 
 /**
- * The allocator interface, which is used to allocate and deallocate memory
+ * The allocator interface, which is used to allocate and deallocate memory.
+ * <p>
  * The behavior of allocate, reallocate and deallocate
- * should similar to malloc, realloc and free
+ * should similar to malloc, realloc and free in standard library.
  */
 struct allocator {
     void* (*const allocate)(size_t size);
