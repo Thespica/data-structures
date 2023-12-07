@@ -11,9 +11,7 @@ int main(void) {
         InsertValueInBST(bst, NewInt(tree_element_value[i]));
     }
     // print, find min and max
-//    InOrderTraversal(bst->tree, PrintIntTNode);
-    putchar('\n');
-    PreOrderTraversal(bst->tree, PrintIntTNode);
+    InOrderTraversal(bst->tree, PrintIntTNode);
     printf("\nMinimum value: %d\n", GetInt(GetMinValueInBST(bst)));
         printf("Maximum value: %d\n", GetInt(GetMaxValueInBST(bst)));
     // insert
