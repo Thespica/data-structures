@@ -6,7 +6,8 @@
 extern struct allocator allocator_instance;
 
 Array NewArray(size_t size) {
-    Array new_array = (Array) allocator_instance.allocate(sizeof(struct array) + size * sizeof(ArrayValue));
+    Array new_array =
+        (Array)allocator_instance.allocate(sizeof(struct array) + size * sizeof(ArrayValue));
     if (!new_array) {
         fprintf(stderr, "NewArray alloc memory fatal.\n");
         exit(OOM_FAIL);
@@ -18,12 +19,11 @@ Array NewArray(size_t size) {
     return new_array;
 }
 
-size_t GetSizeArray(Array array) {
-    return array->size;
-}
+size_t GetSizeArray(Array array) { return array->size; }
 
 Array ResizeArray(Array array, size_t new_array_size) {
-    Array new_array = (Array)allocator_instance.reallocate(array, sizeof(struct array) + new_array_size * sizeof(ArrayValue));
+    Array new_array = (Array)allocator_instance.reallocate(
+        array, sizeof(struct array) + new_array_size * sizeof(ArrayValue));
     if (!new_array) {
         fprintf(stderr, "ResizeArray realloc memory fatal.\n");
         exit(OOM_FAIL);
@@ -57,6 +57,4 @@ ArrayValue ReplaceValueAtArray(Array array, size_t position, ArrayValue value) {
     return ret_value;
 }
 
-void DeleteArray(Array array) {
-    allocator_instance.deallocate(array);
-}
+void DeleteArray(Array array) { allocator_instance.deallocate(array); }

@@ -58,4 +58,4 @@ void LevelOrderTraversal(BinaryTree tree, void (*for_traversing_node)(TNode));
  */
 void DeleteBinaryTree(BinaryTree tree);
 
-#endif //DATA_STRUCT_BINARY_TREE_H
+#endif  // DATA_STRUCT_BINARY_TREE_H

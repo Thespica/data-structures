@@ -13,7 +13,7 @@ int main(void) {
     // print, find min and max
     InOrderTraversal(bst->tree, PrintIntTNode);
     printf("\nMinimum value: %d\n", GetInt(GetMinValueInBST(bst)));
-        printf("Maximum value: %d\n", GetInt(GetMaxValueInBST(bst)));
+    printf("Maximum value: %d\n", GetInt(GetMaxValueInBST(bst)));
     // insert
     InsertValueInBST(bst, NewInt(7));
     InOrderTraversal(bst->tree, PrintIntTNode);

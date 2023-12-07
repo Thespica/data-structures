@@ -3,8 +3,8 @@
 
 #include <stddef.h>
 
-#include "data-structures/list/single_linked_list.h"
 #include "data-structures/base/nodes.h"
+#include "data-structures/list/single_linked_list.h"
 
 /**
  * The stack as a whole, which always points to the head node
@@ -59,4 +59,4 @@ void TraverseStack(Stack stack, void (*for_traversing_node)(Node));
  */
 void DeleteStack(Stack stack);
 
-#endif //DATA_STRUCT_STACK_H
+#endif  // DATA_STRUCT_STACK_H

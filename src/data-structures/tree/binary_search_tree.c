@@ -2,7 +2,6 @@
 
 #include "data-structures/memory/allocator.h"
 #include "data-structures/tree/binary_tree.h"
-#include "data-structures/util/error_code.h"
 
 extern struct allocator allocator_instance;
 
@@ -49,8 +48,8 @@ TNode* GetEqualNodeHolderInBST(BinarySearchTree tree, NodeValue value) {
     TNode* iter_node_holder = &tree->tree;
     while (!tree->eq((*iter_node_holder)->value, value)) {
         iter_node_holder = tree->compare((*iter_node_holder)->value, value)
-                                ? &(*iter_node_holder)->right
-                                : &(*iter_node_holder)->left;
+                               ? &(*iter_node_holder)->right
+                               : &(*iter_node_holder)->left;
         if (!*iter_node_holder) {
             return NULL;
         }
@@ -80,8 +79,9 @@ void InsertValueInBST(BinarySearchTree tree, NodeValue value) {
         if (tree->eq((*iter_node_holder)->value, value)) {
             return;
         }
-        iter_node_holder = tree->compare((*iter_node_holder)->value, value) ? &(*iter_node_holder)->right
-                                                                      : &(*iter_node_holder)->left;
+        iter_node_holder = tree->compare((*iter_node_holder)->value, value)
+                               ? &(*iter_node_holder)->right
+                               : &(*iter_node_holder)->left;
     }
     *iter_node_holder = NewTNode(value, NULL, NULL);
 }

@@ -67,8 +67,7 @@ void TailInsertSLL(SingleLinkedList head, NodeValue value);
  * @param value Pointer to actual value in heap
  * @return Pointer to the original value, which must be hold or free
  */
-NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position,
-                                NodeValue value);
+NodeValue ReplaceNodeValueAtSLL(SingleLinkedList head, size_t position, NodeValue value);
 
 /**
  * Move node value at position, the node itself will be free.

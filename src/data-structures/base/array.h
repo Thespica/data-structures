@@ -77,4 +77,4 @@ ArrayValue ReplaceValueAtArray(Array array, size_t position, ArrayValue value);
  */
 void DeleteArray(Array array);
 
-#endif //DATA_STRUCT_ARRAY_H
+#endif  // DATA_STRUCT_ARRAY_H

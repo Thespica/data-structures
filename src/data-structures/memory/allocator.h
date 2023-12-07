@@ -15,4 +15,4 @@ struct allocator {
     void (*const deallocate)(void* ptr);
 };
 
-#endif //DATA_STRUCT_ALLOCATOR_H
+#endif  // DATA_STRUCT_ALLOCATOR_H

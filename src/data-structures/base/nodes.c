@@ -29,8 +29,7 @@ void DeleteNode(Node node) {
 }
 
 TNode NewTNode(NodeValue value, TNode left, TNode right) {
-    TNode new_t_node =
-        (TNode)allocator_instance.allocate(sizeof(struct t_node));
+    TNode new_t_node = (TNode)allocator_instance.allocate(sizeof(struct t_node));
     new_t_node->value = value;
     new_t_node->left = left;
     new_t_node->right = right;

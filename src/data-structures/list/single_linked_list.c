@@ -62,9 +62,7 @@ NodeValue MoveNodeValueAtSLL(SingleLinkedList head, size_t position) {
     return MoveNodeValue(node_to_be_moved);
 }
 
-NodeValue PopHeadSLL(SingleLinkedList head) {
-    return MoveNodeValueAtSLL(head, 0);
-}
+NodeValue PopHeadSLL(SingleLinkedList head) { return MoveNodeValueAtSLL(head, 0); }
 
 void DeleteNodeAtSLL(SingleLinkedList head, size_t position) {
     if (!position || position > GetSizeSLL(head)) {

@@ -17,7 +17,7 @@ struct binary_search_tree {
 /**
  * The binary search tree holder, which points to the binary search tree in heap
  */
-typedef struct binary_search_tree *BinarySearchTree;
+typedef struct binary_search_tree* BinarySearchTree;
 
 /**
  * Create a new binary search tree

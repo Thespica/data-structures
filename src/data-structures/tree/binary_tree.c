@@ -111,7 +111,7 @@ void PostOrderTraversal(BinaryTree tree, void (*for_traversing_node)(TNode)) {
             if (GetInt(TopStack(is_searched_stack))) {
                 DeleteAndGetInt(PopStack(is_searched_stack));
                 for_traversing_node(PopStack(stack));
-            } else { // switch to right subtree
+            } else {  // switch to right subtree
                 SetInt(TopStack(is_searched_stack), true);
                 current_node = ((TNode)TopStack(stack))->right;
             }

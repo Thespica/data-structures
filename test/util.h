@@ -13,7 +13,7 @@ struct allocator allocator_instance = {
 
 void PrintIntNode(Node node) {
     if (node == NULL) {
-//        printf("NULL ");
+        //        printf("NULL ");
         return;
     }
     printf("%d ", GetInt(node->value));
@@ -21,7 +21,7 @@ void PrintIntNode(Node node) {
 
 void PrintIntTNode(TNode t_node) {
     if (t_node == NULL) {
-//        printf("NULL ");
+        //        printf("NULL ");
         return;
     }
     printf("%d ", GetInt(t_node->value));

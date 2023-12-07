@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 struct iterator {
-    void *ptr;
+    void* ptr;
 };
 
-#endif //DATA_STRUCT_ITERATOR_H
+#endif  // DATA_STRUCT_ITERATOR_H
