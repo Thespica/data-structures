@@ -4,6 +4,7 @@
 
 #include "data-structures/memory/allocator.h"
 #include "data-structures/util/generic.h"
+#include "data-structures/util/error_code.h"
 
 extern struct allocator allocator_instance;
 
@@ -23,8 +24,9 @@ Node GetNodeAtSLL(SingleLinkedList head, size_t position) {
 }
 
 void InsertNodeAtSLL(SingleLinkedList head, size_t position, NodeValue value) {
-    if (position >= GetInt(head->value)) {
-        position = GetInt(head->value);
+    if (head == NULL || head->value == NULL || position > GetInt(head->value)) {
+        fprintf(stderr, "Insertion to single linked list failed!\n");
+        exit(OUT_OF_RANGE_FAIL);
     }
     Node front_node = position ? GetNodeAtSLL(head, position - 1) : head;
     Node new_node = NewNode(value, front_node->next);

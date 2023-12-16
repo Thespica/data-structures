@@ -27,4 +27,12 @@ void PrintIntTNode(TNode t_node) {
     printf("%d ", GetInt(t_node->value));
 }
 
+void PrintIntTNodeWithDepth(TNodeWithDepth t_node) {
+    if (t_node == NULL) {
+        //        printf("NULL ");
+        return;
+    }
+    printf("%d ", GetInt(t_node->value));
+}
+
 #endif  // DATA_STRUCT_UTIL_H

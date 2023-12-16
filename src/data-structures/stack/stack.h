@@ -6,6 +6,8 @@
 #include "data-structures/base/nodes.h"
 #include "data-structures/list/single_linked_list.h"
 
+#define NEW_STACK_ON_STACK() &(struct node){&(int){0}, NULL}
+
 /**
  * The stack as a whole, which always points to the head node
  */

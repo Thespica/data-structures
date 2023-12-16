@@ -2,6 +2,7 @@
 #define DATA_STRUCT_NODES_H
 
 #include <stdbool.h>
+#include <stddef.h>
 
 /**
  * The value of a node, which is a void pointer holding the actual value for
@@ -110,5 +111,18 @@ NodeValue MoveTNodeValue(TNode t_node);
  * @param t_node Pointer of the t_node
  */
 void DeleteTNode(TNode t_node);
+
+struct t_node_with_depth {
+    NodeValue value;
+    int depth;
+    struct t_node_with_depth* left;
+    struct t_node_with_depth* right;
+};
+
+typedef struct t_node_with_depth* TNodeWithDepth;
+
+TNodeWithDepth NewTNodeWithDepth(NodeValue value, TNodeWithDepth left, TNodeWithDepth right);
+
+void DeleteTNodeWithDepth(TNodeWithDepth t_node_with_depth);
 
 #endif  // DATA_STRUCT_NODES_H

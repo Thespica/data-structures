@@ -52,3 +52,18 @@ void DeleteTNode(TNode t_node) {
     allocator_instance.deallocate(t_node->value);
     allocator_instance.deallocate(t_node);
 }
+
+TNodeWithDepth NewTNodeWithDepth(NodeValue value, TNodeWithDepth left, TNodeWithDepth right) {
+    TNodeWithDepth new_t_node_with_depth =
+        (TNodeWithDepth)allocator_instance.allocate(sizeof(struct t_node_with_depth));
+    new_t_node_with_depth->value = value;
+    new_t_node_with_depth->left = left;
+    new_t_node_with_depth->right = right;
+    new_t_node_with_depth->depth = 1;
+    return new_t_node_with_depth;
+}
+
+void DeleteTNodeWithDepth(TNodeWithDepth t_node_with_depth) {
+    allocator_instance.deallocate(t_node_with_depth->value);
+    allocator_instance.deallocate(t_node_with_depth);
+}
