@@ -10,16 +10,16 @@ extern struct allocator allocator;
 /**
  * Use void pointer to hold the actual element value
  */
-typedef void* ArrayValue;
+typedef void* Value;
 
 struct array {
-    size_t size;
+    size_t capacity;
     // Flexible array member, which is a C99 feature
-    ArrayValue array[0];
+    Value array[0];
 };
 
 /**
- * The array as a whole, which has a size and a flexible array(whose element type is void*) member
+ * The array as a whole, which has a capacity and a flexible array(whose element type is void*) member
  */
 typedef struct array* Array;
 
@@ -32,7 +32,7 @@ typedef struct array* Array;
 Array NewArray(size_t size);
 
 /**
- * Get size of the array
+ * Get capacity of the array
  * @param array Pointer of the array
  * @return Size of the array
  */
@@ -40,12 +40,12 @@ size_t GetSizeArray(Array array);
 
 /**
  * Resize the array.
- * If new_size is smaller than original size, the elements in the tail will be lost.
- * If new_size is equal to original size, the array will not be changed.
- * If new_size is larger than original size, the new elements will be initialized to NULL.
+ * If new_size is smaller than original capacity, the elements in the tail will be lost.
+ * If new_size is equal to original capacity, the array will not be changed.
+ * If new_size is larger than original capacity, the new elements will be initialized to NULL.
  *
  * @param array Pointer of the array
- * @param new_array_size New size of the array
+ * @param new_array_size New capacity of the array
  * @return Pointer of the new array
  */
 Array ResizeArray(Array array, size_t new_array_size);
@@ -57,7 +57,7 @@ Array ResizeArray(Array array, size_t new_array_size);
  * @param position Position of the array, begin with 0
  * @return A pointer to the actual value in heap
  */
-ArrayValue GetValueAtArray(Array array, size_t position);
+Value GetValueAtArray(Array array, size_t position);
 
 /**
  * Replace the array value at position. The position starts from 0.
@@ -68,7 +68,7 @@ ArrayValue GetValueAtArray(Array array, size_t position);
  * @param value Pointer to the actual value in heap
  * @return Pointer of the original value, which must be hold or free
  */
-ArrayValue ReplaceValueAtArray(Array array, size_t position, ArrayValue value);
+Value ReplaceValueAtArray(Array array, size_t position, Value value);
 
 /**
  * Delete the array in heap

@@ -18,7 +18,7 @@ typedef Node SingleLinkedList;
 SingleLinkedList NewSLL(void);
 
 /**
- * Get size of the single linked list
+ * Get capacity of the single linked list
  *
  * @param head Head pointer of single linked list
  * @return Number of nodes

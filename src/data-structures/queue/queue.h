@@ -45,7 +45,7 @@ void EnQueue(Queue queue, NodeValue value);
 NodeValue DeQueue(Queue queue);
 
 /**
- * Get size of the queue
+ * Get capacity of the queue
  *
  * @param queue Head pointer of queue
  * @return Size of the queue

@@ -39,7 +39,7 @@ void PushStack(Stack stack, NodeValue value);
 NodeValue PopStack(Stack stack);
 
 /**
- * Get size of the stack
+ * Get capacity of the stack
  *
  * @param stack Pointer of the stack
  * @return Size of the stack

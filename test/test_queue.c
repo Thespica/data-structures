@@ -8,7 +8,7 @@ int main(void) {
     for (int i = 0; i < 10; i++) {
         EnQueue(queue, NewInt(i));
     }
-    printf("Queue size: %zu\n", GetQueueSize(queue));
+    printf("Queue capacity: %zu\n", GetQueueSize(queue));
     TraverseQueue(queue, PrintIntNode);
     printf("\nDe queue value: %d\n", DeleteAndGetInt(DeQueue(queue)));
     printf("De queue value: %d\n", DeleteAndGetInt(DeQueue(queue)));
