@@ -1,7 +1,8 @@
+Language: Cpp
 BasedOnStyle: Google
 IndentWidth: 4
 PointerAlignment: Left
-DerivePointerAlignment: false
+DerivePointerAlignment: true
 SortIncludes: CaseSensitive
 IncludeBlocks: Preserve
 ColumnLimit: 100
